@@ -1,0 +1,14 @@
+node_modules/
+dist/
+bin/
+obj/
+artifacts/
+shots/
+*.db
+*.db-wal
+*.db-shm
+src/AskFix.Api/wwwroot/assets/
+src/AskFix.Api/wwwroot/index.html
+src/AskFix.Api/wwwroot/favicon.svg
+.env
+.zcode/
