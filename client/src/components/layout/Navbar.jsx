@@ -1,11 +1,27 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
-import { Search, Bell, LogOut, Bookmark, UserRound, ChevronDown, MessageSquareText, Settings, Shield } from 'lucide-react'
+import { Search, Bell, LogOut, Bookmark, UserRound, ChevronDown, MessageSquareText, Settings, Shield, Moon, Sun } from 'lucide-react'
 import Avatar from '../common/Avatar'
 import { useAuth } from '../../store/auth'
 import { unreadCount, markAllRead, logout, getNotifications } from '../../lib/api'
 import * as desktop from '../../lib/desktopNotifications'
+import * as theme from '../../lib/theme'
+
+function ThemeToggle() {
+  const [dark, setDark] = useState(theme.isDark())
+  return (
+    <button
+      type="button"
+      className="p-2 rounded-full text-ink-soft hover:bg-ink/[0.06] hover:text-ink transition-colors"
+      onClick={() => setDark(theme.toggleTheme())}
+      aria-label={dark ? 'Switch to light mode' : 'Switch to dark mode'}
+      title={dark ? 'Light mode' : 'Dark mode'}
+    >
+      {dark ? <Sun size={20} /> : <Moon size={20} />}
+    </button>
+  )
+}
 
 const NOTIF_VERBS = {
   Answer: 'answered your question',
@@ -198,7 +214,7 @@ export default function Navbar() {
   }
 
   return (
-    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-line">
+    <header className="sticky top-0 z-40 bg-surface/95 backdrop-blur border-b border-line">
       <div className="mx-auto max-w-[1280px] px-4 h-[57px] flex items-center gap-3">
         <Link to="/" className="flex items-center gap-2 shrink-0" aria-label="AskFix home">
           <span className="w-[30px] h-[30px] rounded-[9px] bg-gradient-to-br from-brand-dark to-brand-violet flex items-center justify-center shadow-sm">
@@ -219,12 +235,12 @@ export default function Navbar() {
             value={q}
             onChange={(e) => setQ(e.target.value)}
             className="w-full h-[38px] pl-10 pr-14 rounded-full bg-ink/[0.055] text-[14px] border border-transparent
-                       focus:bg-white focus:border-brand/40 focus:ring-2 focus:ring-brand/15 outline-none transition-all
+                       focus:bg-surface focus:border-brand/40 focus:ring-2 focus:ring-brand/15 outline-none transition-all
                        placeholder:text-ink-faint py-2"
             placeholder="Search questions, answers, tags…"
             aria-label="Search"
           />
-          <kbd className="absolute right-3.5 top-1/2 -translate-y-1/2 hidden md:block text-[10.5px] text-ink-faint border border-line rounded px-1.5 py-0.5 bg-white">
+          <kbd className="absolute right-3.5 top-1/2 -translate-y-1/2 hidden md:block text-[10.5px] text-ink-faint border border-line rounded px-1.5 py-0.5 bg-surface">
             /
           </kbd>
         </form>
@@ -233,6 +249,7 @@ export default function Navbar() {
           <Link to="/ask" className="btn-primary hidden sm:inline-flex">
             Ask question
           </Link>
+          <ThemeToggle />
           <NotificationBell />
           <UserMenu />
         </div>

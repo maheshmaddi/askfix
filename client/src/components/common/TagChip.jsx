@@ -11,7 +11,7 @@ export default function TagChip({ tag, size = 'md', interactive = true }) {
       {tag.name}
     </>
   )
-  const base = `chip ${cls} border border-line bg-white hover:border-ink/25 text-ink`
+  const base = `chip ${cls} border border-line bg-surface hover:border-ink/25 text-ink`
   if (!interactive) return <span className={`${base} cursor-default`}>{body}</span>
   return (
     <Link to={`/tag/${tag.slug}`} className={`${base} transition-colors`} onClick={(e) => e.stopPropagation()}>

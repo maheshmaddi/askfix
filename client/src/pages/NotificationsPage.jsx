@@ -10,10 +10,10 @@ import EmptyState from '../components/common/EmptyState'
 
 const TYPE_META = {
   Answer: { icon: MessageSquareText, verb: 'answered your question', color: 'text-brand bg-brand-50' },
-  Upvote: { icon: ArrowBigUp, verb: 'upvoted your answer', color: 'text-amber-600 bg-amber-50' },
-  Comment: { icon: MessageCircle, verb: 'commented on your answer', color: 'text-sky-600 bg-sky-50' },
-  Accepted: { icon: BadgeCheck, verb: 'marked your answer as the fix', color: 'text-emerald-600 bg-emerald-50' },
-  Follow: { icon: BellPlus, verb: 'followed your question', color: 'text-violet-600 bg-violet-50' },
+  Upvote: { icon: ArrowBigUp, verb: 'upvoted your answer', color: 'text-amber-600 bg-amber-50 dark:bg-amber-500/15 dark:text-amber-300' },
+  Comment: { icon: MessageCircle, verb: 'commented on your answer', color: 'text-sky-600 bg-sky-50 dark:bg-sky-500/15 dark:text-sky-300' },
+  Accepted: { icon: BadgeCheck, verb: 'marked your answer as the fix', color: 'text-emerald-600 bg-emerald-50 dark:bg-emerald-500/15 dark:text-emerald-300' },
+  Follow: { icon: BellPlus, verb: 'followed your question', color: 'text-violet-600 bg-violet-50 dark:bg-violet-500/15 dark:text-violet-300' },
 }
 
 export default function NotificationsPage() {

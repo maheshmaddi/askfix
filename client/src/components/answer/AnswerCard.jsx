@@ -74,7 +74,7 @@ export default function AnswerCard({ answer, question }) {
   return (
     <article id={`answer-${answer.id}`} className={`card p-5 ${answer.isAccepted ? 'ring-1 ring-emerald-500/30' : ''}`}>
       {answer.isAccepted && (
-        <div className="flex items-center gap-2 text-[13px] font-bold text-emerald-700 bg-emerald-50 rounded-lg px-3 py-2 mb-4">
+        <div className="flex items-center gap-2 text-[13px] font-bold text-emerald-700 bg-emerald-50 dark:bg-emerald-500/10 dark:text-emerald-300 rounded-lg px-3 py-2 mb-4">
           <BadgeCheck size={16} />
           This answer worked for the asker
         </div>
@@ -145,8 +145,8 @@ export default function AnswerCard({ answer, question }) {
           <button
             className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[13px] font-semibold transition-colors ${
               answer.isAccepted
-                ? 'text-emerald-700 bg-emerald-50 hover:bg-emerald-100'
-                : 'text-ink-soft hover:bg-emerald-50 hover:text-emerald-700'
+                ? 'text-emerald-700 bg-emerald-50 hover:bg-emerald-100 dark:bg-emerald-500/15 dark:text-emerald-300 dark:hover:bg-emerald-500/25'
+                : 'text-ink-soft hover:bg-emerald-50 hover:text-emerald-700 dark:hover:bg-emerald-500/15 dark:hover:text-emerald-300'
             }`}
             onClick={() => acceptMu.mutate()}
             title={answer.isAccepted ? 'Unmark as worked' : 'Mark this as the fix that worked'}

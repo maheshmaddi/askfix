@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
-import { Bell, Loader2, BellRing, CheckCircle2, Info } from 'lucide-react'
+import { Bell, Loader2, BellRing, CheckCircle2, Info, Sun, Moon, Monitor } from 'lucide-react'
 import { getNotifPrefs, saveNotifPrefs } from '../lib/api'
 import * as desktop from '../lib/desktopNotifications'
+import * as theme from '../lib/theme'
 import { useAuth } from '../store/auth'
 
 function Toggle({ checked, onChange, disabled = false, label, hint }) {
@@ -18,7 +19,7 @@ function Toggle({ checked, onChange, disabled = false, label, hint }) {
           checked ? 'bg-brand' : 'bg-ink/20'
         }`}
       >
-        <span className={`absolute top-[2px] w-[18px] h-[18px] rounded-full bg-white shadow transition-all ${checked ? 'left-[18px]' : 'left-[2px]'}`} />
+        <span className={`absolute top-[2px] w-[18px] h-[18px] rounded-full bg-surface shadow transition-all ${checked ? 'left-[18px]' : 'left-[2px]'}`} />
       </button>
       <span className="min-w-0">
         <span className="block text-[14px] font-semibold leading-tight">{label}</span>
@@ -68,7 +69,7 @@ function EmailSection() {
         <h3 className="font-bold text-[15px]">Email notifications</h3>
         <span className="ml-auto flex items-center gap-1.5">
           {save.isPending && <Loader2 size={14} className="animate-spin text-ink-faint" />}
-          {saved && <span className="text-[12.5px] font-semibold text-emerald-600 flex items-center gap-1"><CheckCircle2 size={13} /> Saved</span>}
+          {saved && <span className="text-[12.5px] font-semibold text-emerald-600 dark:text-emerald-400 flex items-center gap-1"><CheckCircle2 size={13} /> Saved</span>}
         </span>
       </div>
       <p className="text-[13px] text-ink-soft mb-2">
@@ -125,7 +126,7 @@ function BrowserSection() {
       <div className="flex items-center gap-2 mb-1">
         <BellRing size={16} className="text-brand" />
         <h3 className="font-bold text-[15px]">Browser notifications</h3>
-        {enabled && <span className="ml-auto chip bg-emerald-50 text-emerald-700 font-bold">Active</span>}
+        {enabled && <span className="ml-auto chip bg-emerald-50 text-emerald-700 dark:bg-emerald-500/15 dark:text-emerald-300 font-bold">Active</span>}
       </div>
       <p className="text-[13px] text-ink-soft mb-2">
         A desktop popup while an AskFix tab is open — quick updates without watching the site.
@@ -161,6 +162,48 @@ function BrowserSection() {
   )
 }
 
+function AppearanceSection() {
+  const [current, setCurrent] = useState(theme.effectiveTheme())
+
+  const choose = (t) => {
+    theme.setTheme(t)
+    setCurrent(t)
+  }
+
+  const options = [
+    { key: 'system', label: 'System', icon: Monitor, hint: 'Follows your PC' },
+    { key: 'light', label: 'Light', icon: Sun },
+    { key: 'dark', label: 'Dark', icon: Moon },
+  ]
+
+  return (
+    <div className="card p-5">
+      <div className="flex items-center gap-2 mb-1">
+        {current === 'dark' ? <Moon size={16} className="text-brand" /> : <Sun size={16} className="text-brand" />}
+        <h3 className="font-bold text-[15px]">Appearance</h3>
+      </div>
+      <p className="text-[13px] text-ink-soft mb-3.5">How AskFix looks on this device.</p>
+      <div className="grid grid-cols-3 gap-2.5">
+        {options.map(({ key, label, icon: Icon, hint }) => (
+          <button
+            key={key}
+            onClick={() => choose(key)}
+            className={`flex flex-col items-center gap-1.5 rounded-xl border px-3 py-3.5 transition-colors ${
+              current === key
+                ? 'border-brand bg-brand-50 text-brand'
+                : 'border-line text-ink-soft hover:border-ink/25 hover:text-ink'
+            }`}
+          >
+            <Icon size={18} />
+            <span className="text-[13.5px] font-semibold">{label}</span>
+            {hint && <span className="text-[11px] text-ink-faint">{hint}</span>}
+          </button>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 export default function SettingsPage() {
   const { user } = useAuth()
   return (
@@ -168,6 +211,7 @@ export default function SettingsPage() {
       <h1 className="text-q-page mb-1">Settings</h1>
       <p className="text-[14px] text-ink-soft mb-6">Notification preferences for {user?.displayName}.</p>
       <div className="space-y-4">
+        <AppearanceSection />
         <EmailSection />
         <BrowserSection />
       </div>

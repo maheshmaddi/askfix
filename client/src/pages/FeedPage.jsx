@@ -26,7 +26,7 @@ function AskPrompt() {
       </span>
       <Link
         to="/ask"
-        className="flex-1 rounded-full border border-line hover:border-brand/40 bg-ink/[0.03] hover:bg-white px-4 py-2 text-[14px] text-ink-faint transition-colors"
+        className="flex-1 rounded-full border border-line hover:border-brand/40 bg-ink/[0.03] hover:bg-surface px-4 py-2 text-[14px] text-ink-faint transition-colors"
       >
         What tool is giving you trouble, {user?.displayName?.split(' ')[0]}?
       </Link>

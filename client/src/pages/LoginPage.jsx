@@ -11,6 +11,24 @@ const DEMO_USERS = [
   { sam: 'corp\\arjun.p', label: 'Arjun · QA' },
 ]
 
+import { Moon, Sun } from 'lucide-react'
+import * as theme from '../lib/theme'
+
+function LoginThemeToggle() {
+  const [dark, setDark] = useState(theme.isDark())
+  return (
+    <button
+      type="button"
+      className="p-2 rounded-full text-ink-soft hover:bg-ink/[0.06] hover:text-ink transition-colors"
+      onClick={() => setDark(theme.toggleTheme())}
+      aria-label={dark ? 'Switch to light mode' : 'Switch to dark mode'}
+      title={dark ? 'Light mode' : 'Dark mode'}
+    >
+      {dark ? <Sun size={19} /> : <Moon size={19} />}
+    </button>
+  )
+}
+
 export default function LoginPage() {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -43,7 +61,10 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col lg:flex-row bg-canvas">
+    <div className="min-h-screen flex flex-col lg:flex-row bg-canvas relative">
+      <div className="absolute top-4 right-4 z-10">
+        <LoginThemeToggle />
+      </div>
       {/* brand panel */}
       <div className="lg:w-[46%] bg-gradient-to-br from-brand-dark via-brand to-brand-violet text-white px-8 py-12 lg:py-0 flex flex-col justify-center relative overflow-hidden">
         <div
@@ -55,7 +76,8 @@ export default function LoginPage() {
         />
         <div className="relative max-w-md mx-auto lg:mx-0 lg:ml-auto lg:mr-16">
           <span className="flex items-center gap-2.5 mb-8">
-            <span className="w-11 h-11 rounded-xl bg-white flex items-center justify-center shadow-lg">              <svg viewBox="0 0 24 24" className="w-7 h-7" fill="#5457D6" aria-hidden="true">
+            <span className="w-11 h-11 rounded-xl bg-white flex items-center justify-center shadow-lg">
+              <svg viewBox="0 0 24 24" className="w-7 h-7" fill="#5457D6" aria-hidden="true">
                 <path d="M11.2 5.2 16.8 18.4h-2.4l-1.2-3h-4.4l-1.2 3H5.2L10.8 5.2Zm-.5 7.9h2.6L12 9.7Z" />
                 <circle cx="17.2" cy="6.6" r="1.55" />
               </svg>
@@ -101,7 +123,7 @@ export default function LoginPage() {
           <p className="text-[14.5px] text-ink-soft mt-1.5 mb-7">Sign in with your Windows / domain account.</p>
 
           {params.get('expired') === '1' && !error && (
-            <div className="mb-4 text-[13.5px] text-amber-800 bg-amber-50 border border-amber-200 rounded-lg px-3.5 py-2.5">
+            <div className="mb-4 text-[13.5px] text-amber-800 bg-amber-50 border border-amber-200 dark:bg-amber-500/10 dark:border-amber-500/30 dark:text-amber-300 rounded-lg px-3.5 py-2.5">
               Your session expired. Please sign in again.
             </div>
           )}
@@ -159,7 +181,7 @@ export default function LoginPage() {
           </form>
 
           {appInfo?.devMode && (
-            <div className="mt-6 rounded-xl border border-dashed border-line bg-white p-4">
+            <div className="mt-6 rounded-xl border border-dashed border-line bg-surface p-4">
               <div className="text-[12px] font-bold text-ink-soft uppercase tracking-wide mb-2">
                 Dev mode — demo accounts (password: <code className="font-mono text-brand">AskFix!123</code>)
               </div>
@@ -168,7 +190,7 @@ export default function LoginPage() {
                   <button
                     key={u.sam}
                     type="button"
-                    className="chip border border-line bg-white hover:border-brand/50 hover:text-brand transition-colors"
+                    className="chip border border-line bg-surface hover:border-brand/50 hover:text-brand transition-colors"
                     onClick={() => {
                       setUsername(u.sam)
                       setPassword('AskFix!123')

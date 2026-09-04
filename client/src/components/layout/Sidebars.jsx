@@ -49,7 +49,7 @@ export function LeftSidebar() {
 
 export function MobileTabBar() {
   return (
-    <nav className="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-white border-t border-line flex">
+    <nav className="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-surface border-t border-line flex">
       {[
         { to: '/', icon: Home, label: 'Home', end: true },
         { to: '/tags', icon: Tags, label: 'Tags' },

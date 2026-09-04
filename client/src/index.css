@@ -3,6 +3,36 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    color-scheme: light;
+    --c-canvas: 247 247 248;      /* #F7F7F8 */
+    --c-surface: 255 255 255;     /* #FFFFFF */
+    --c-ink: 25 25 25;            /* #191919 */
+    --c-ink-soft: 99 100 102;     /* #636466 */
+    --c-ink-faint: 147 149 152;   /* #939598 */
+    --c-line: 223 224 225;        /* #DFE0E1 */
+    --c-brand: 84 87 214;         /* #5457D6 */
+    --c-brand-dark: 63 66 189;    /* #3F42BD */
+    --c-brand-soft: 241 242 252;  /* #F1F2FC */
+    --c-brand-50: 238 238 252;    /* #EEEEFC */
+    --c-brand-100: 223 226 249;   /* #DFE2F9 */
+  }
+
+  .dark {
+    color-scheme: dark;
+    --c-canvas: 18 18 23;         /* #121217 */
+    --c-surface: 28 28 35;        /* #1C1C23 */
+    --c-ink: 233 233 240;         /* #E9E9F0 */
+    --c-ink-soft: 168 170 180;    /* #A8AAB4 */
+    --c-ink-faint: 118 120 130;   /* #767882 */
+    --c-line: 45 45 56;           /* #2D2D38 */
+    --c-brand: 130 134 232;       /* #8286E8 */
+    --c-brand-dark: 109 113 224;  /* hover shade in dark */
+    --c-brand-soft: 38 41 72;     /* #262948 */
+    --c-brand-50: 42 45 82;       /* #2A2D52 */
+    --c-brand-100: 52 56 96;      /* #343860 */
+  }
+
   html {
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
@@ -14,14 +44,17 @@
   ::selection {
     @apply bg-brand-100;
   }
+  .dark ::selection {
+    @apply text-white;
+  }
   *:focus-visible {
-    @apply outline-none ring-2 ring-brand/40 ring-offset-1;
+    @apply outline-none ring-2 ring-brand/40 ring-offset-1 ring-offset-canvas;
   }
 }
 
 @layer components {
   .card {
-    @apply bg-white rounded-xl border border-line/80 shadow-card;
+    @apply bg-surface rounded-xl border border-line/80 shadow-card;
   }
   .btn {
     @apply inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all
@@ -31,13 +64,13 @@
     @apply btn bg-brand text-white hover:bg-brand-dark shadow-sm px-4 h-9 text-[14px];
   }
   .btn-secondary {
-    @apply btn bg-white text-ink border border-line hover:bg-ink/[0.04] px-4 h-9 text-[14px];
+    @apply btn bg-surface text-ink border border-line hover:bg-ink/[0.04] px-4 h-9 text-[14px];
   }
   .btn-ghost {
     @apply btn text-ink-soft hover:bg-ink/[0.06] hover:text-ink px-3 h-8 text-[13.5px];
   }
   .input {
-    @apply w-full rounded-lg border border-line bg-white px-3.5 py-2.5 text-[15px] text-ink
+    @apply w-full rounded-lg border border-line bg-surface px-3.5 py-2.5 text-[15px] text-ink
            placeholder:text-ink-faint transition-shadow focus:border-brand/60
            hover:border-ink/25 focus:ring-2 focus:ring-brand/15 outline-none;
   }
@@ -88,6 +121,9 @@
 .rich-content pre {
   @apply relative my-3 rounded-lg overflow-hidden;
   background: #1e1f24;
+}
+.dark .rich-content pre {
+  border: 1px solid rgba(255, 255, 255, 0.07);
 }
 .rich-content pre > code {
   @apply block px-4 py-3.5 text-[13px] leading-[1.6] overflow-x-auto text-[#d8dae0];

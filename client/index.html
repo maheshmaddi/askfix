@@ -6,6 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="AskFix — the internal place to ask about tool, setup and project problems, and share what worked." />
     <title>AskFix — ask. answer. fix.</title>
+    <script>
+      // apply saved theme before the bundle loads (no flash of wrong theme)
+      try {
+        var t = localStorage.getItem('askfix_theme')
+        if (t === 'dark' || (!t && matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark')
+        }
+      } catch (e) {}
+    </script>
   </head>
   <body>
     <div id="root"></div>

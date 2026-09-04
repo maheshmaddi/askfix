@@ -283,7 +283,7 @@ function TagsTab() {
                 value={t.color}
                 disabled={editing?.id !== t.id}
                 onChange={(e) => setEditing({ ...editing, color: e.target.value })}
-                className="w-8 h-8 rounded-lg border border-line cursor-pointer disabled:cursor-default bg-white shrink-0"
+                className="w-8 h-8 rounded-lg border border-line cursor-pointer disabled:cursor-default bg-surface shrink-0"
                 aria-label={`${t.name} color`}
               />
               <div className="min-w-0 flex-1">
@@ -409,7 +409,7 @@ function ContentTab() {
               key={t}
               onClick={() => { setType(t); setPage(1) }}
               className={`px-3.5 py-1.5 rounded-full text-[13px] font-semibold capitalize transition-colors ${
-                type === t ? 'bg-white text-ink shadow-sm' : 'text-ink-soft'
+                type === t ? 'bg-surface text-ink shadow-sm' : 'text-ink-soft'
               }`}
             >
               {t}s
@@ -571,7 +571,7 @@ function EmailTab() {
       {error && <div className="mt-4 text-[13.5px] text-brand-dark bg-brand-50 border border-brand/25 rounded-lg px-3.5 py-2.5">{error}</div>}
       {testResult && (
         <div className={`mt-4 text-[13.5px] rounded-lg px-3.5 py-2.5 border ${
-          testResult.ok ? 'text-emerald-700 bg-emerald-50 border-emerald-200' : 'text-brand-dark bg-brand-50 border-brand/25'
+          testResult.ok ? 'text-emerald-700 bg-emerald-50 border-emerald-200 dark:bg-emerald-500/10 dark:border-emerald-500/30 dark:text-emerald-300' : 'text-brand-dark bg-brand-50 border-brand/25'
         }`}>
           {testResult.text}
         </div>

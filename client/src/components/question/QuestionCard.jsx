@@ -29,7 +29,7 @@ export default function QuestionCard({ question, onAnswer }) {
       <h2 className="text-q-title text-ink group-hover:text-brand transition-colors mb-1.5">
         {question.title}
         {question.hasAccepted && (
-          <CheckCircle2 size={17} className="inline-block ml-1.5 -mt-0.5 text-emerald-600" aria-label="Has a working answer" />
+          <CheckCircle2 size={17} className="inline-block ml-1.5 -mt-0.5 text-emerald-600 dark:text-emerald-400" aria-label="Has a working answer" />
         )}
       </h2>
 

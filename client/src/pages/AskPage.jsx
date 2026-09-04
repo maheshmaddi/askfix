@@ -78,8 +78,8 @@ export default function AskPage() {
         </div>
 
         {similar.data?.length > 0 && titleValid && (
-          <div className="mt-3 rounded-xl border border-amber-200 bg-amber-50/70 p-3.5">
-            <div className="flex items-center gap-1.5 text-[13px] font-bold text-amber-900 mb-2">
+          <div className="mt-3 rounded-xl border border-amber-200 bg-amber-50/70 dark:border-amber-500/30 dark:bg-amber-500/10 p-3.5">
+            <div className="flex items-center gap-1.5 text-[13px] font-bold text-amber-900 dark:text-amber-300 mb-2">
               <Sparkles size={14} /> Similar questions — maybe already answered:
             </div>
             <ul className="space-y-1.5">
@@ -120,7 +120,7 @@ export default function AskPage() {
         </div>
       </div>
 
-      <div className="card p-5 mt-4 bg-gradient-to-br from-brand-50/60 to-white">
+      <div className="card p-5 mt-4 bg-gradient-to-br from-brand-50/60 to-surface">
         <div className="flex gap-3">
           <CircleHelp size={20} className="text-brand shrink-0 mt-0.5" />
           <div className="text-[13.5px] text-ink-soft leading-relaxed">

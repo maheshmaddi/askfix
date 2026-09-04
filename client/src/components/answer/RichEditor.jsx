@@ -126,8 +126,8 @@ export default function RichEditor({ value, onChange, placeholder = 'Write what 
   }
 
   return (
-    <div className="tiptap-editor border border-line rounded-lg overflow-hidden focus-within:border-brand/50 focus-within:ring-2 focus-within:ring-brand/15 transition-shadow bg-white">
-      <div className="flex items-center flex-wrap gap-0.5 px-2 py-1.5 border-b border-line/80 bg-[#FAFAFB]">
+    <div className="tiptap-editor border border-line rounded-lg overflow-hidden focus-within:border-brand/50 focus-within:ring-2 focus-within:ring-brand/15 transition-shadow bg-surface">
+      <div className="flex items-center flex-wrap gap-0.5 px-2 py-1.5 border-b border-line/80 bg-canvas">
         <MenuButton title="Bold" onClick={() => editor.chain().focus().toggleBold().run()} active={editor.isActive('bold')}>
           <Bold size={16} />
         </MenuButton>

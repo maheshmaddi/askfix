@@ -33,7 +33,7 @@ export default function TagInput({ tags, onChange, max = 5 }) {
 
   return (
     <div>
-      <div className="flex flex-wrap items-center gap-1.5 border border-line rounded-lg px-2 py-2 focus-within:border-brand/50 focus-within:ring-2 focus-within:ring-brand/15 transition-shadow bg-white">
+      <div className="flex flex-wrap items-center gap-1.5 border border-line rounded-lg px-2 py-2 focus-within:border-brand/50 focus-within:ring-2 focus-within:ring-brand/15 transition-shadow bg-surface">
         {tags.map((t) => (
           <span key={t.slug} className="chip bg-brand-50 text-brand gap-1.5">
             <span className="w-[7px] h-[7px] rounded-full" style={{ backgroundColor: t.color }} />
@@ -64,7 +64,7 @@ export default function TagInput({ tags, onChange, max = 5 }) {
       {suggestions.length > 0 && (
         <div className="flex flex-wrap gap-1.5 mt-2">
           {suggestions.map((s) => (
-            <button key={s.slug} type="button" className="chip border border-line bg-white hover:border-brand/50 hover:text-brand" onClick={() => addTag(s)}>
+            <button key={s.slug} type="button" className="chip border border-line bg-surface hover:border-brand/50 hover:text-brand" onClick={() => addTag(s)}>
               + {s.name}
             </button>
           ))}

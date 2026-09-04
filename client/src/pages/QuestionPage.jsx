@@ -278,7 +278,7 @@ export default function QuestionPage() {
       <div className="flex items-center gap-3 mt-6 mb-3.5">
         <h2 className="text-[16.5px] font-extrabold">{question.answerCount} {question.answerCount === 1 ? 'Answer' : 'Answers'}</h2>
         {hasAccepted && (
-          <span className="flex items-center gap-1 chip bg-emerald-50 text-emerald-700 font-bold">
+          <span className="flex items-center gap-1 chip bg-emerald-50 text-emerald-700 dark:bg-emerald-500/15 dark:text-emerald-300 font-bold">
             <BadgeCheck size={13.5} /> Contains a working fix
           </span>
         )}
@@ -286,7 +286,7 @@ export default function QuestionPage() {
           <select
             value={sort}
             onChange={(e) => setSort(e.target.value)}
-            className="appearance-none bg-white border border-line rounded-full pl-3.5 pr-8 py-1.5 text-[13px] font-semibold cursor-pointer hover:border-ink/25 outline-none"
+            className="appearance-none bg-surface border border-line rounded-full pl-3.5 pr-8 py-1.5 text-[13px] font-semibold cursor-pointer hover:border-ink/25 outline-none"
             aria-label="Sort answers"
           >
             <option value="top">Top rated</option>

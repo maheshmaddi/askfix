@@ -23,6 +23,7 @@ An internal Q&A web app for your intranet: employees post problems with tools, s
 - **Profiles** synced from AD (name, e-mail, department) with stats and activity tabs
 - **Search** across questions, answers and tags with result tabs
 - Right rail: trending this month, popular tags, related questions, site stats
+- **Dark mode** — follows your PC setting by default; switch anytime with the moon/sun button (navbar / login page) or Settings → Appearance (System / Light / Dark)
 - Login rate-limiting, HTML sanitization (DOMPurify + server-side), image type/size validation
 
 ## Admin panel (`/admin`)

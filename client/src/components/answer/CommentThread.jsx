@@ -94,7 +94,7 @@ export default function CommentThread({ answer }) {
               onChange={(e) => setBody(e.target.value)}
               placeholder="Add a comment…"
               maxLength={1000}
-              className="flex-1 bg-ink/[0.04] hover:bg-ink/[0.055] focus:bg-white border border-transparent focus:border-brand/40 rounded-full px-3.5 py-1.5 text-[13px] outline-none transition-colors"
+              className="flex-1 bg-ink/[0.04] hover:bg-ink/[0.055] focus:bg-surface border border-transparent focus:border-brand/40 rounded-full px-3.5 py-1.5 text-[13px] outline-none transition-colors"
             />
             <button
               type="submit"
